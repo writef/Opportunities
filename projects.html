@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرص | المشاريع الاستثمارية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* تكرار الأنماط الأساسية للمحافظة على التناسق */
+        :root {
+            --primary: #2563eb; --primary-dark: #1e40af;
+            --secondary: #0f172a; --accent: #f97316;
+            --text: #334155; --light-text: #64748b;
+            --bg-light: #f8fafc; --white: #ffffff;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; line-height: 1.6; color: var(--text); background-color: var(--bg-light); padding-top: 80px; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header/Footer Styles (Identical to Index) */
+        header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--secondary); display: flex; align-items: center; gap: 8px; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; font-weight: 600; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links .active { color: var(--primary); font-weight: 800; }
+        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+        
+        footer { background: #020617; color: #94a3b8; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; border-bottom: 1px solid #1e293b; padding-bottom: 40px; }
+        .footer-logo { color: white; font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: inline-block; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a:hover { color: var(--primary); padding-right: 5px; }
+
+        /* أزرار */
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 50px; font-weight: 700; cursor: pointer; border: none; font-size: 1rem; gap: 10px; }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; }
+        .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+        /* Projects Styles */
+        .page-header { background: var(--white); padding: 60px 0; text-align: center; border-bottom: 1px solid #e2e8f0; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
+        
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .project-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: 0.3s; border: 1px solid #e2e8f0; position: relative; }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .card-tag { position: absolute; top: 20px; right: 20px; background: rgba(15, 23, 42, 0.8); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; backdrop-filter: blur(4px); }
+        .card-img { height: 200px; overflow: hidden; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .project-card:hover .card-img img { transform: scale(1.1); }
+        .card-body { padding: 25px; }
+        .card-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; color: var(--secondary); }
+        .progress-wrapper { margin: 20px 0; }
+        .progress-labels { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; color: var(--light-text); }
+        .progress-bar { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary); border-radius: 4px; }
+        .roi-badge { background: #fff7ed; color: var(--accent); padding: 8px 15px; border-radius: 8px; font-weight: 700; display: inline-block; margin-bottom: 15px; }
+        .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #f1f5f9; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    فرص<span>.</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="projects.html" class="active">المشاريع</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+                <div class="mobile-toggle">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="section-header">
+                <h2>فرص <span>استثمارية</span> متاحة الآن</h2>
+                <p>اختر المشروع الذي يناسب ميزانيتك وتطلعاتك</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <div class="container">
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <span class="card-tag" style="background: #7c3aed;">تقنية</span>
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/software/400/300" alt="منصة سحابة">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">منصة "سحابة" السحابية</h3>
+                    <div class="roi-badge">عائد متوقع: 22% سنوياً</div>
+                    <p style="color: var(--light-text); font-size: 0.95rem;">خدمة استضافة سحابية للمشاريع الصغيرة، تبحث عن تمويل لتوسيع خوادمها.</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-labels"><span>تم جمع: 850,000 ر.س</span><span>85%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="font-weight: 700; color: var(--secondary);">الحد الأدنى: 5,000 ر.س</span>
+                        <button class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">استثمر الآن</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <span class="card-tag" style="background: #f97316;">خدمات لوجستية</span>
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/trucking/400/300" alt="خدمات توصيل">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">شركة "المتاز" للخدمات</h3>
+                    <div class="roi-badge">عائد متوقع: 18% سنوياً</div>
+                    <p style="color: var(--light-text); font-size: 0.95rem;">شركة توصيل متخصصة في البضائع التجارية بين المدن.</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-labels"><span>تم جمع: 200,000 ر.س</span><span>40%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 40%;"></div></div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="font-weight: 700; color: var(--secondary);">الحد الأدنى: 2,000 ر.س</span>
+                        <button class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">استثمر الآن</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <span class="card-tag" style="background: #db2777;">أزياء</span>
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/fashionstore/400/300" alt="مصمم أزياء">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">علامة "أندلس" للأزياء</h3>
+                    <div class="roi-badge">عائد متوقع: 15% سنوياً</div>
+                    <p style="color: var(--light-text); font-size: 0.95rem;">علامة تجارية محلية تنتج الملابس العصرية، تسعى لفتح 5 فروع جديدة.</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-labels"><span>تم جمع: 450,000 ر.س</span><span>60%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="font-weight: 700; color: var(--secondary);">الحد الأدنى: 10,000 ر.س</span>
+                        <button class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">استثمر الآن</button>
+                    </div>
+                </div>
+            </div>
+             <!-- Project 4 -->
+             <div class="project-card">
+                <span class="card-tag" style="background: #059669;">صناعات غذائية</span>
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/foodfactory/400/300" alt="مصنع أغذية">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">مصنع "الطازجة" للأغذية</h3>
+                    <div class="roi-badge">عائد متوقع: 20% سنوياً</div>
+                    <p style="color: var(--light-text); font-size: 0.95rem;">مشروع لتصنيع المعلبات الصحية والعضوية للتصدير.</p>
+                    <div class="progress-wrapper">
+                        <div class="progress-labels"><span>تم جمع: 1,200,000 ر.س</span><span>90%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="font-weight: 700; color: var(--secondary);">الحد الأدنى: 25,000 ر.س</span>
+                        <button class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">استثمر الآن</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-bottom: 60px;">
+            <a href="#" class="btn btn-primary">عرض المزيد من المشاريع</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">فرص.</a>
+                    <p>المنصة العربية الأولى للتواصل بين المستثمرين وأصحاب المشاريع الواعدة.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 20px;">روابط هامة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="projects.html">المشاريع</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 20px;">تواصل معنا</h4>
+                    <ul class="footer-links">
+                        <li>support@furoos.com</li>
+                        <li>+966 50 000 0000</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; font-size: 0.9rem;">
+                <p>جميع الحقوق محفوظة © 2023 منصة فرص للاستثمار</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const toggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if(navLinks.style.display === 'flex'){
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px'; navLinks.style.left = '0'; navLinks.style.width = '100%';
+                navLinks.style.background = 'white'; navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 10px 15px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرص | الرئيسية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        /* المتغيرات */
+        :root {
+            --primary: #2563eb; /* أزرق */
+            --primary-dark: #1e40af;
+            --accent: #f97316; /* برتقالي */
+            --secondary: #0f172a; /* كحلي غامق */
+            --text: #334155;
+            --light-text: #94a3b8;
+            --white: #ffffff;
+            --bg-light: #f8fafc;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; line-height: 1.6; color: var(--text); background-color: var(--white); overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--secondary); display: flex; align-items: center; gap: 8px; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; font-weight: 600; }
+        .nav-links a:hover, .nav-links .active { color: var(--primary); }
+        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* Hero Section (كامل الشاشة مع خلفية) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.7)), url('https://picsum.photos/seed/businessmeeting/1920/1080.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+        }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
+        .hero-content p { font-size: 1.25rem; margin-bottom: 40px; color: #cbd5e1; max-width: 700px; margin-left: auto; margin-right: auto; }
+        
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 30px; border-radius: 8px; font-weight: 700; cursor: pointer; border: none; font-size: 1rem; gap: 10px; transition: 0.3s; }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-outline { border: 2px solid var(--white); color: var(--white); background: transparent; }
+        .btn-outline:hover { background: var(--white); color: var(--secondary); }
+
+        /* Stats Strip */
+        .stats { background-color: var(--white); padding: 60px 0; box-shadow: var(--shadow); margin-top: -50px; position: relative; z-index: 10; border-radius: 8px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
+        .stat-item h3 { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 5px; }
+        .stat-item p { font-weight: 600; color: var(--secondary); }
+
+        /* About Section */
+        .section { padding: 100px 0; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-text h3 { font-size: 2rem; margin-bottom: 20px; color: var(--secondary); }
+        .about-text p { margin-bottom: 20px; color: var(--light-text); font-size: 1.1rem; }
+        .about-image img { border-radius: 20px; box-shadow: var(--shadow); }
+
+        /* App Features */
+        .bg-light { background-color: var(--bg-light); }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .feature-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; }
+        .feature-icon { width: 60px; height: 60px; background: #eff6ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; }
+        .feature-card h4 { margin-bottom: 10px; color: var(--secondary); font-size: 1.2rem; }
+
+        /* App Download Section */
+        .app-promo { padding: 100px 0; background: var(--secondary); color: white; }
+        .promo-container { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px; }
+        .promo-content h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .app-badges { display: flex; gap: 15px; margin-top: 30px; }
+        .app-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 20px; border-radius: 10px; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+        .app-badge:hover { background: var(--primary); border-color: var(--primary); }
+        .app-badge svg { width: 30px; height: 30px; }
+
+        /* Footer */
+        footer { background: #020617; color: #94a3b8; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; border-bottom: 1px solid #1e293b; padding-bottom: 40px; }
+        .footer-logo { color: white; font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: inline-block; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a:hover { color: var(--primary); padding-right: 5px; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .about-grid, .promo-container { grid-template-columns: 1fr; text-align: center; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: 1fr; }
+            .app-badges { justify-content: center; }
+            .stats { margin: 0 20px; margin-top: -30px; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    فرص<span>.</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">الرئيسية</a></li>
+                    <li><a href="projects.html">المشاريع</a></li>
+                    <li><a href="contact.html">اتصل بنا</a></li>
+                </ul>
+                <a href="projects.html" class="btn btn-primary" style="display: none;">تصفح الفرص</a>
+                <div class="mobile-toggle">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>منصتك الأولى للاستثمار في <span>المشاريع الواعدة</span></h1>
+                <p>نربط بين أصحاب رؤوس الأموال وأصحاب المشاريع الناجحة. استثمر بذكاء وأمان عبر تطبيق "فرص" وحقق أعلى العوائد.</p>
+                <div class="hero-buttons">
+                    <a href="projects.html" class="btn btn-primary">تصفح الفرص</a>
+                    <a href="contact.html" class="btn btn-outline">تواصل معنا</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Strip -->
+    <div class="container">
+        <div class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>+10</h3>
+                    <p>سنوات خبرة</p>
+                </div>
+                <div class="stat-item">
+                    <h3>+500</h3>
+                    <p>مشروع ممول</p>
+                </div>
+                <div class="stat-item">
+                    <h3>+50M</h3>
+                    <p>جنيه استثمار</p>
+                </div>
+                <div class="stat-item">
+                    <h3>+10K</h3>
+                    <p>مستثمر نشط</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://picsum.photos/seed/teamwork/600/400" alt="فريق العمل">
+                </div>
+                <div class="about-text">
+                    <h3>من نحن؟</h3>
+                    <p>نحن "فرص"، منصة تقنية رائدة تهدف إلى تحويل مفهوم الاستثمار التقليدي. نحن لا نقدم مجرد نصائح مالية، بل نوفر لك البوابة الحقيقية لامتلاك حصة في مشاريع تجارية حقيقية.</p>
+                    <p>من خلال التكنولوجيا الحديثة والذكاء الاصطناعي، نقوم بدراسة وتدقيق المشاريع بعناية فائقة لنقدم لك لك فقط الفرص الأكثر أماناً وربحية.</p>
+                    <ul style="margin-top: 20px; list-style: none;">
+                        <li style="margin-bottom: 10px;">✅ شفافية مطلقة في جميع المعاملات</li>
+                        <li style="margin-bottom: 10px;">✅ دراسة جدوى واحترافية لكل مشروع</li>
+                        <li>✅ توزيع أرباح دوري ومضمون</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / Why Us -->
+    <section class="section bg-light">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px;">لماذا تختار منصة فرص؟</h2>
+                <p style="color: var(--light-text);">نقدم لك تجربة استثمارية تتجاوز التوقعات</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h4>أمان واستقرار</h4>
+                    <p style="font-size: 0.9rem; color: var(--light-text);">نستخدم أعلى معايير التشفير والحماية البنكية لحماية استثماراتك.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4>سهولة الوصول</h4>
+                    <p style="font-size: 0.9rem; color: var(--light-text);">تطبيق متاح على جميع الأجهزة يتيح لك إدارة استثماراتك في أي وقت.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>تقارير دورية</h4>
+                    <p style="font-size: 0.9rem; color: var(--light-text);">لوحة تحكم شاملة تعرض لك أداء مشاريعك وأرباحك لحظة بلحظة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download Promo -->
+    <section class="app-promo">
+        <div class="container">
+            <div class="promo-container">
+                <div class="promo-content">
+                    <h2>ابدأ رحلتك الاستثمارية الآن</h2>
+                    <p style="margin-bottom: 30px; opacity: 0.9;">حمل تطبيق "فرص" اليوم واكتشف عالماً جديداً من الفرص الاستثمارية في راحة يدك. التسجيل مجاني والبدء في الاستثمار سهل.</p>
+                    
+                    <div class="app-badges">
+                        <a href="#" class="app-badge">
+                            <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path></svg>
+                            <div><div style="font-size: 10px; opacity: 0.8;">حمل من</div><div style="font-weight: bold; font-size: 14px;">App Store</div></div>
+                        </a>
+                        <a href="#" class="app-badge">
+                            <svg viewBox="0 0 512 512"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"></path></svg>
+                            <div><div style="font-size: 10px; opacity: 0.8;">Get it on</div><div style="font-weight: bold; font-size: 14px;">Google Play</div></div>
+                        </a>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://picsum.photos/seed/mobileui/300/500" alt="هاتف" style="border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); max-width: 300px; margin: 0 auto;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">فرص.</a>
+                    <p>المنصة العربية الأولى للتواصل بين المستثمرين وأصحاب المشاريع الواعدة.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 20px;">روابط هامة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="projects.html">المشاريع</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 20px;">تواصل معنا</h4>
+                    <ul class="footer-links">
+                        <li>support@furoos.com</li>
+                        <li>+966 50 000 0000</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; font-size: 0.9rem;">
+                <p>جميع الحقوق محفوظة © 2023 منصة فرص للاستثمار</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const toggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if(navLinks.style.display === 'flex'){
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px'; navLinks.style.left = '0'; navLinks.style.width = '100%';
+                navLinks.style.background = 'white'; navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 10px 15px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+
+</body></html>

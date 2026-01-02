@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرص | اتصل بنا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Shared Styles */
+        :root {
+            --primary: #2563eb; --primary-dark: #1e40af;
+            --secondary: #0f172a; --accent: #f97316;
+            --text: #334155; --light-text: #64748b;
+            --bg-light: #f8fafc; --white: #ffffff;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; line-height: 1.6; color: var(--text); background-color: var(--bg-light); padding-top: 80px; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header/Footer */
+        header { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--secondary); display: flex; align-items: center; gap: 8px; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 30px; font-weight: 600; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-links .active { color: var(--primary); font-weight: 800; }
+        .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+        
+        footer { background: #020617; color: #94a3b8; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; margin-bottom: 40px; border-bottom: 1px solid #1e293b; padding-bottom: 40px; }
+        .footer-logo { color: white; font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display: inline-block; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a:hover { color: var(--primary); padding-right: 5px; }
+
+        /* Contact Page Styles */
+        .page-header { background: var(--white); padding: 60px 0; text-align: center; border-bottom: 1px solid #e2e8f0; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--secondary); margin-bottom: 10px; }
+
+        .contact-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); margin-bottom: 80px; }
+        .contact-info { background: var(--secondary); color: var(--white); padding: 50px; }
+        .contact-info h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--white); }
+        .info-item { margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+        .info-item svg { color: var(--accent); width: 24px; height: 24px; }
+
+        .contact-form-wrapper { padding: 50px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--secondary); }
+        .form-control { width: 100%; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit; font-size: 1rem; transition: 0.3s; }
+        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+        .btn-primary { width: 100%; border-radius: 8px; }
+
+        @media (max-width: 768px) {
+            .contact-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    فرص<span>.</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="projects.html">المشاريع</a></li>
+                    <li><a href="contact.html" class="active">اتصل بنا</a></li>
+                </ul>
+                <div class="mobile-toggle">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="section-header">
+                <h2>تواصل معنا</h2>
+                <p>فريقنا جاهز للإجابة على استفساراتك ومساعدتك في بدء رحلتك الاستثمارية</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <div class="container">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>بيانات التواصل</h3>
+                <p style="margin-bottom: 30px; opacity: 0.8;">يسعدنا سماع صوتك ومساعدتك بأي طريقة ممكنة.</p>
+                
+                <div class="info-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <p>الرياض، طريق الملك فهد، برج الأعمال</p>
+                </div>
+                <div class="info-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    <p>+966 11 123 4567</p>
+                </div>
+                <div class="info-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    <p>support@furoos.com</p>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <form onsubmit="event.preventDefault(); alert('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.');">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" class="form-control" placeholder="أدخل اسمك هنا" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" placeholder="example@mail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">موضوع الرسالة</label>
+                        <input type="text" id="subject" class="form-control" placeholder="استفسار استثماري">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <textarea id="message" class="form-control" placeholder="كيف يمكننا مساعدتك؟" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">فرص.</a>
+                    <p>المنصة العربية الأولى للتواصل بين المستثمرين وأصحاب المشاريع الواعدة.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 20px;">روابط هامة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="projects.html">المشاريع</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="color: white; margin-bottom: 20px;">تواصل معنا</h4>
+                    <ul class="footer-links">
+                        <li>support@furoos.com</li>
+                        <li>+966 50 000 0000</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; font-size: 0.9rem;">
+                <p>جميع الحقوق محفوظة © 2023 منصة فرص للاستثمار</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const toggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if(navLinks.style.display === 'flex'){
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px'; navLinks.style.left = '0'; navLinks.style.width = '100%';
+                navLinks.style.background = 'white'; navLinks.style.padding = '20px';
+                navLinks.style.boxShadow = '0 10px 15px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
